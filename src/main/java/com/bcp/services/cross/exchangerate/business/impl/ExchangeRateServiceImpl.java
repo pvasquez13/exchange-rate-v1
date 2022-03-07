@@ -20,7 +20,6 @@ import io.reactivex.Single;
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -60,6 +59,12 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 
   @Override
   public Single<ExchangeRateCreateResponse> createExchangeRate(ExchangeRateCreateRequest exchangeRateCreateRequest) {
+    exchangeRateRepository.findByOriginCurrencyAndDestinationCurrency(
+            exchangeRateCreateRequest.getOriginCurrency(),
+            exchangeRateCreateRequest.getDestinationCurrency()).ifPresent(request -> {
+              throw new EntityBadRequestException("Exchange rate already exists");
+    });
+
     ExchangeRate exchangeRate = exchangeRateProcessor.process(exchangeRateCreateRequest);
     ExchangeRate transformersReturn = exchangeRateRepository.save(exchangeRate);
     return exchangeRateProcessor.processResponse(transformersReturn);
