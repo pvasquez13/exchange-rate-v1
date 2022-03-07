@@ -16,4 +16,5 @@ public class ExchangeRateProcessed {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long operationId;
   private LocalDateTime registerDate;
+  private String exchangeRateRequestId;
 }
