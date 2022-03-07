@@ -123,6 +123,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
       ExchangeRateProcessed exchangeRateProcessed = new ExchangeRateProcessed();
       LocalDateTime registerDateTime = LocalDateTime.now(ZoneId.of(Constants.TIME_ZONE));
       exchangeRateProcessed.setRegisterDate(registerDateTime);
+      exchangeRateProcessed.setExchangeRateRequestId(processExchangeRateRequest.getExchangeRateId());
       ExchangeRateProcessed processed = exchangeRateProcessedRepository.save(exchangeRateProcessed);
       exchangeRateRequest.setProcessed(true);
       exchangeRateRequestRepository.saveAndFlush(exchangeRateRequest);
