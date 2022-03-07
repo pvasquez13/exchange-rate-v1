@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -36,7 +37,7 @@ import java.util.List;
  */
 @RestController
 @Api(tags = "ExchangeRate")
-@RequestMapping("bcp/v1/exchange-rate")
+@RequestMapping("/api/bcp/v1/exchange-rate")
 @Slf4j
 public class ExchangeRateController {
     /**
@@ -64,6 +65,7 @@ public class ExchangeRateController {
                     message = "The service is not available."
             )
     })
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     public Observable<ExchangeRateSearchListResponse> searchExchangeRateList() {
@@ -94,6 +96,7 @@ public class ExchangeRateController {
                     message = "the data sent is incorrect."
             )
     })
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     public Single<ExchangeRateCreateResponse> createExchangeRate(@Valid @RequestBody ExchangeRateCreateRequest exchangeRateCreateRequest) {
@@ -118,6 +121,7 @@ public class ExchangeRateController {
             @ApiResponse(code = 400, message = "The data sent is incorrect."),
             @ApiResponse(code = 500, message = "Error trying to update resource.")
     })
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping(value = "/{exchangeRateId}")
     public Completable updateExchangeRate(@PathVariable("exchangeRateId") Long exchangeRateId,
@@ -152,6 +156,7 @@ public class ExchangeRateController {
                     message = "Error trying to calculate exchange rate."
             )
     })
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     @ResponseStatus(HttpStatus.OK)
     @PostMapping(value = "/calculate", produces = {MediaType.APPLICATION_JSON_VALUE})
     public Single<ExchangeRateCalculationResponse> calculateExchangeRate(
@@ -187,6 +192,7 @@ public class ExchangeRateController {
                     message = "Error trying to process exchange rate."
             )
     })
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     @ResponseStatus(HttpStatus.OK)
     @PostMapping(value = "/exchange-order", produces = {MediaType.APPLICATION_JSON_VALUE})
     public Single<ProcessExchangeRateResponse> processExchangeRate(
