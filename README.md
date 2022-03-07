@@ -28,6 +28,7 @@ The endpoints of this API are protected with spring security and JWT, so it is n
 ### Payload request example
 ```json
 {
+  "name": "Peter",
   "username": "pvasquez",
   "email": "pvasquez@gmail.com",
   "password": "password",
