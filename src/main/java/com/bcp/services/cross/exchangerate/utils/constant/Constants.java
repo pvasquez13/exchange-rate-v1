@@ -24,5 +24,8 @@ public class Constants {
 
   public static final String DESCRIPTION_MALFORMED_JSON_REQUEST = "Malformed JSON request";
   public static final String PREFIX_ROLE = "ROLE_";
+  public static final String LOCAL_CURRENCY = "PEN";
+  public static final String PATTERN_DATE = "yyyy-MM-dd' 'HH:mm:ss";
+  public static final String TIME_ZONE = "UTC-5";
 
 }

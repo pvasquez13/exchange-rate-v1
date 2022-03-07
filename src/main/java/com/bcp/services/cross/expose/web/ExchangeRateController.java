@@ -1,5 +1,6 @@
 package com.bcp.services.cross.expose.web;
 
+import com.bcp.services.cross.exchangerate.business.ExchangeRateService;
 import com.bcp.services.cross.exchangerate.model.api.*;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
@@ -9,14 +10,13 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Main controller that exposes the service via HTTP / Rest for
@@ -40,6 +40,9 @@ import java.util.List;
 @RequestMapping("/api/bcp/v1/exchange-rate")
 @Slf4j
 public class ExchangeRateController {
+
+    @Autowired
+    ExchangeRateService exchangeRateService;
     /**
      * Endpoint showing list of exchange rate
      *
@@ -69,8 +72,7 @@ public class ExchangeRateController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     public Observable<ExchangeRateSearchListResponse> searchExchangeRateList() {
-        List<ExchangeRateSearchListResponse> exchangeRateSearchListResponses = new ArrayList<>();
-        return Observable.fromIterable(exchangeRateSearchListResponses);
+        return exchangeRateService.searchExchangeRateList();
     }
 
     /**
@@ -99,10 +101,9 @@ public class ExchangeRateController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
-    public Single<ExchangeRateCreateResponse> createExchangeRate(@Valid @RequestBody ExchangeRateCreateRequest exchangeRateCreateRequest) {
-        ExchangeRateCreateResponse exchangeRateCreateResponse = new ExchangeRateCreateResponse();
-        exchangeRateCreateResponse.setExchangeRateId(1L);
-        return Single.just(exchangeRateCreateResponse);
+    public Single<ExchangeRateCreateResponse> createExchangeRate(
+            @Valid @RequestBody ExchangeRateCreateRequest exchangeRateCreateRequest) {
+        return exchangeRateService.createExchangeRate(exchangeRateCreateRequest);
     }
 
     /**
@@ -126,7 +127,7 @@ public class ExchangeRateController {
     @PatchMapping(value = "/{exchangeRateId}")
     public Completable updateExchangeRate(@PathVariable("exchangeRateId") Long exchangeRateId,
                                           @Valid @RequestBody ExchangeRateCreateRequest exchangeRateCreateRequest) {
-        return Completable.complete();
+        return exchangeRateService.updateExchangeRate(exchangeRateId, exchangeRateCreateRequest);
     }
 
     /**
@@ -161,8 +162,7 @@ public class ExchangeRateController {
     @PostMapping(value = "/calculate", produces = {MediaType.APPLICATION_JSON_VALUE})
     public Single<ExchangeRateCalculationResponse> calculateExchangeRate(
             @Valid @RequestBody ExchangeRateCalculationRequest exchangeRateCalculationRequest) {
-        ExchangeRateCalculationResponse exchangeRateCreateResponse = new ExchangeRateCalculationResponse();
-        return Single.just(exchangeRateCreateResponse);
+        return exchangeRateService.calculateExchangeRate(exchangeRateCalculationRequest);
     }
 
     /**
@@ -197,7 +197,6 @@ public class ExchangeRateController {
     @PostMapping(value = "/exchange-order", produces = {MediaType.APPLICATION_JSON_VALUE})
     public Single<ProcessExchangeRateResponse> processExchangeRate(
             @Valid @RequestBody ProcessExchangeRateRequest processExchangeRateRequest) {
-        ProcessExchangeRateResponse processExchangeRateResponse = new ProcessExchangeRateResponse();
-        return Single.just(processExchangeRateResponse);
+        return exchangeRateService.processExchangeRate(processExchangeRateRequest);
     }
 }

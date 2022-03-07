@@ -1,5 +1,6 @@
-package com.bcp.services.cross.exchangerate.model.entity;
+package com.bcp.services.cross.exchangerate.model.entity.security;
 
+import com.bcp.services.cross.exchangerate.model.entity.security.Rol;
 import lombok.Getter;
 import lombok.Setter;
 

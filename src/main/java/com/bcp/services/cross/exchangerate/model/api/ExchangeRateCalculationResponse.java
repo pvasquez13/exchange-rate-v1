@@ -12,13 +12,13 @@ import java.math.BigDecimal;
 public class ExchangeRateCalculationResponse {
 
     @ApiModelProperty(
-            name = "operationId",
-            value = "Operation ID",
+            name = "exchangeRateId",
+            value = "Exchange Rate ID",
             example = "b5100a6c-57c9-44c1-975c-b782b4e51b77",
             dataType = "String",
             position = 1
     )
-    private String operationId;
+    private String exchangeRateId;
 
     @ApiModelProperty(
             name = "chargeAmount",
@@ -82,5 +82,23 @@ public class ExchangeRateCalculationResponse {
             position = 8
     )
     private BigDecimal rateSale;
+
+    @ApiModelProperty(
+            name = "registerDate",
+            value = "Register Date",
+            example = "2022-03-01T20:46:39",
+            dataType = "string",
+            position = 9
+    )
+    private String registerDate;
+
+    @ApiModelProperty(
+            name = "dueDate",
+            value = "Due Date",
+            example = "2022-03-01T20:51:39",
+            dataType = "string",
+            position = 9
+    )
+    private String dueDate;
 
 }

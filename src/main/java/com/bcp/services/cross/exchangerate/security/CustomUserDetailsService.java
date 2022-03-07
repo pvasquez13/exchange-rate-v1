@@ -1,8 +1,8 @@
 package com.bcp.services.cross.exchangerate.security;
 
-import com.bcp.services.cross.exchangerate.model.entity.Rol;
-import com.bcp.services.cross.exchangerate.model.entity.User;
-import com.bcp.services.cross.exchangerate.repository.UserRepository;
+import com.bcp.services.cross.exchangerate.model.entity.security.Rol;
+import com.bcp.services.cross.exchangerate.model.entity.security.User;
+import com.bcp.services.cross.exchangerate.repository.security.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

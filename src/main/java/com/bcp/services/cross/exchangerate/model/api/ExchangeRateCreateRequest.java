@@ -54,7 +54,8 @@ public class ExchangeRateCreateRequest {
             value = "Purchase rate",
             example = "3.717000",
             dataType = "bigDecimal",
-            required = true
+            required = true,
+            position = 4
     )
     @DecimalMin(value = "0.0", inclusive = false)
     @Digits(integer = 6, fraction = 6, message = "numeric value out of bounds (<6 digits>.<5 digits> expected)")

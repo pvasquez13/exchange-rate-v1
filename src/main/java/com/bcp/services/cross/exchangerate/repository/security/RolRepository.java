@@ -1,6 +1,6 @@
-package com.bcp.services.cross.exchangerate.repository;
+package com.bcp.services.cross.exchangerate.repository.security;
 
-import com.bcp.services.cross.exchangerate.model.entity.Rol;
+import com.bcp.services.cross.exchangerate.model.entity.security.Rol;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
