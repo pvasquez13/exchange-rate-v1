@@ -1,6 +1,6 @@
 package com.bcp.services.cross.exchangerate.security;
 
-import com.bcp.services.cross.exchangerate.exception.BlogAppException;
+import com.bcp.services.cross.exchangerate.exception.ExchangeRateAppException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -48,19 +48,19 @@ public class JwtTokenProvider {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
             return true;
         } catch (SignatureException ex) {
-            throw new BlogAppException(HttpStatus.BAD_REQUEST,"Invalid JWT Signature");
+            throw new ExchangeRateAppException(HttpStatus.BAD_REQUEST,"Invalid JWT Signature");
         }
         catch (MalformedJwtException ex) {
-            throw new BlogAppException(HttpStatus.BAD_REQUEST,"JWT invalid");
+            throw new ExchangeRateAppException(HttpStatus.BAD_REQUEST,"JWT invalid");
         }
         catch (ExpiredJwtException ex) {
-            throw new BlogAppException(HttpStatus.BAD_REQUEST,"JWT expired");
+            throw new ExchangeRateAppException(HttpStatus.BAD_REQUEST,"JWT expired");
         }
         catch (UnsupportedJwtException ex) {
-            throw new BlogAppException(HttpStatus.BAD_REQUEST,"JWT unsupported");
+            throw new ExchangeRateAppException(HttpStatus.BAD_REQUEST,"JWT unsupported");
         }
         catch (IllegalArgumentException ex) {
-            throw new BlogAppException(HttpStatus.BAD_REQUEST,"JWT claims is empty");
+            throw new ExchangeRateAppException(HttpStatus.BAD_REQUEST,"JWT claims is empty");
         }
     }
 }

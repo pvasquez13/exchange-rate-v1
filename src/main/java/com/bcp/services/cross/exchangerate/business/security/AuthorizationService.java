@@ -1,4 +1,4 @@
-package com.bcp.services.cross.exchangerate.business;
+package com.bcp.services.cross.exchangerate.business.security;
 
 import com.bcp.services.cross.exchangerate.model.api.security.LoginRequest;
 import com.bcp.services.cross.exchangerate.model.api.security.UserRequest;

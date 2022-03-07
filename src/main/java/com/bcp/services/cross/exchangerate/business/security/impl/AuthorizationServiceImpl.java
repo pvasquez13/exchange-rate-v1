@@ -1,12 +1,12 @@
-package com.bcp.services.cross.exchangerate.business.impl;
+package com.bcp.services.cross.exchangerate.business.security.impl;
 
-import com.bcp.services.cross.exchangerate.business.AuthorizationService;
+import com.bcp.services.cross.exchangerate.business.security.AuthorizationService;
 import com.bcp.services.cross.exchangerate.model.api.security.LoginRequest;
 import com.bcp.services.cross.exchangerate.model.api.security.UserRequest;
-import com.bcp.services.cross.exchangerate.model.entity.Rol;
-import com.bcp.services.cross.exchangerate.model.entity.User;
-import com.bcp.services.cross.exchangerate.repository.RolRepository;
-import com.bcp.services.cross.exchangerate.repository.UserRepository;
+import com.bcp.services.cross.exchangerate.model.entity.security.Rol;
+import com.bcp.services.cross.exchangerate.model.entity.security.User;
+import com.bcp.services.cross.exchangerate.repository.security.RolRepository;
+import com.bcp.services.cross.exchangerate.repository.security.UserRepository;
 import com.bcp.services.cross.exchangerate.security.JwtAuthResponseDTO;
 import com.bcp.services.cross.exchangerate.security.JwtTokenProvider;
 import com.bcp.services.cross.exchangerate.utils.constant.Constants;

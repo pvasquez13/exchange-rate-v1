@@ -1,7 +1,6 @@
 package com.bcp.services.cross.expose.web;
 
-import com.bcp.services.cross.exchangerate.business.AuthorizationService;
-import com.bcp.services.cross.exchangerate.model.api.ExchangeRateCalculationResponse;
+import com.bcp.services.cross.exchangerate.business.security.AuthorizationService;
 import com.bcp.services.cross.exchangerate.model.api.security.LoginRequest;
 import com.bcp.services.cross.exchangerate.model.api.security.UserRequest;
 import com.bcp.services.cross.exchangerate.security.JwtAuthResponseDTO;

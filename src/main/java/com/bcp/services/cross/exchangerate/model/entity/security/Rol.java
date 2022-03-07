@@ -1,4 +1,4 @@
-package com.bcp.services.cross.exchangerate.model.entity;
+package com.bcp.services.cross.exchangerate.model.entity.security;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

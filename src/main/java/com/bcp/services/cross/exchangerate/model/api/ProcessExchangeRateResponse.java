@@ -20,23 +20,13 @@ public class ProcessExchangeRateResponse {
     private String operationNumber;
 
     @ApiModelProperty(
-            name = "operationDate",
-            value = "Operation Date",
-            example = "02/03/22",
+            name = "operationDateTime",
+            value = "Operation DateTime",
+            example = "2022-03-01 20:51:39",
             dataType = "string",
             position = 2
     )
-    private String operationDate;
-
-    @ApiModelProperty(
-            name = "operationTime",
-            value = "Operation Time",
-            example = "20:44",
-            dataType = "string",
-            position = 3
-    )
-    private String operationTime;
-
+    private String operationDateTime;
 
 
 }
