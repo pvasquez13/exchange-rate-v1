@@ -35,7 +35,7 @@ public class ExchangeRateCalculationRequest {
             required = true
     )
     @NotEmpty
-    @Size(min = 3, max = 4, message = "name must be between 3 and 3 characters")
+    @Size(min = 3, max = 4, message = "name must be between 3 and 4 characters")
     private String destinationCurrency;
 
     @ApiModelProperty(
