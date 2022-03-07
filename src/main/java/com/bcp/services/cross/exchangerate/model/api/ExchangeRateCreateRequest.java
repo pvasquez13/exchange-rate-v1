@@ -5,10 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Getter
@@ -24,7 +21,7 @@ public class ExchangeRateCreateRequest {
             required = true
     )
     @NotEmpty
-    @Size(min = 3, max = 4, message = "originCurrency must be between 3 and 4 characters")
+    @Pattern(regexp = "^(PEN)$", message = "originCurrency only accepts value PEN")
     private String originCurrency;
 
     @ApiModelProperty(
@@ -41,7 +38,7 @@ public class ExchangeRateCreateRequest {
     @ApiModelProperty(
             name = "sellingRate",
             value = "Selling rate",
-            example = "3.789000",
+            example = "3.78",
             dataType = "bigDecimal",
             required = true
     )
@@ -52,7 +49,7 @@ public class ExchangeRateCreateRequest {
     @ApiModelProperty(
             name = "purchaseRate",
             value = "Purchase rate",
-            example = "3.717000",
+            example = "3.71",
             dataType = "bigDecimal",
             required = true,
             position = 4

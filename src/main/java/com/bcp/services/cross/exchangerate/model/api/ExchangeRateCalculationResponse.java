@@ -59,7 +59,7 @@ public class ExchangeRateCalculationResponse {
     @ApiModelProperty(
             name = "rate",
             value = "Rate",
-            example = "3.789000",
+            example = "3.78",
             dataType = "bigDecimal",
             position = 6
     )
@@ -68,7 +68,7 @@ public class ExchangeRateCalculationResponse {
     @ApiModelProperty(
             name = "ratePurchase",
             value = "Rate purchase",
-            example = "3.717000",
+            example = "3.71",
             dataType = "bigDecimal",
             position = 7
     )
@@ -77,7 +77,7 @@ public class ExchangeRateCalculationResponse {
     @ApiModelProperty(
             name = "rateSale",
             value = "Rate sale",
-            example = "3.789000",
+            example = "3.78",
             dataType = "bigDecimal",
             position = 8
     )
